@@ -1,0 +1,13 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.column{
+    border-style: solid;
+}
+
+.row{
+    display: flex;
+    gap: 5px;
+}
