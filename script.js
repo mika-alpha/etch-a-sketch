@@ -1,29 +1,45 @@
 let container = document.querySelector('.main');
+let sizeButton = document.getElementById('size');
+let cells;
 
-/*create columns, create rows, then add the columns to the rows,
+function modifyGridSize(){
+    container.replaceChildren();
+    let newSize = Number(window.prompt("Type a desired size that is less than 100: ", ""));
+    if (newSize > 100 || newSize <= 0){
+        alert("Invalid size");
+        return;
+    }
+    createGrid(newSize);
+    addCellListener();
+}
+
+/*create rows, create columns, then add the columns to the rows,
 then add the rows to the grid */
 
-
-function createGrid(){
-    for (let i = 0; i < 16; i++){
+function createGrid(x = 16){
+    for (let i = 0; i < x; i++){
         let row = document.createElement('div');
         row.classList.add(`row`);
-        for (let j = 0; j < 16; j++){
+        for (let j = 0; j < x; j++){
             let column = document.createElement('div');
             column.classList.add('column');
             row.appendChild(column);
         }
         container.appendChild(row);
     }
+    addCellListener();
 }
-
 
 createGrid();
 
-let cells = Array.from(document.getElementsByClassName('column'));
+function addCellListener(){
+    cells = Array.from(document.getElementsByClassName('column'));
+    cells.forEach(cell => cell.addEventListener('mouseenter',hover));
+}
 
-cells.forEach(cell => cell.addEventListener('mouseenter',hover));
 
 function hover(e){
     e.target.classList.add('hovered');
 }
+
+sizeButton.addEventListener('click', modifyGridSize);
