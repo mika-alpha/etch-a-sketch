@@ -9,10 +9,18 @@ body{
     min-height: 100vh;
 }
 
-.buttons{
-    
+h1{
+    font-size: 70px;
+
 }
 
+.top{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
 .main{
     display: flex;
     flex-direction: column;
@@ -20,6 +28,8 @@ body{
     padding: 0;
     width: 800px;
     height: 600px;
+    border-radius: 30px;
+    margin-top: 20px;
 }
 
 .column,
@@ -33,8 +43,4 @@ body{
 
 .row{
     display: flex;
-}
-
-.hovered{
-    background-color: black;
 }

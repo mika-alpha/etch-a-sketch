@@ -1,6 +1,16 @@
 let container = document.querySelector('.main');
 let sizeButton = document.getElementById('size');
 let cells;
+let randomColor = [];
+let brightness = 101;
+
+
+function createRandomColor(){
+    randomColor[0] = Math.floor(Math.random() * 255);
+    randomColor[1] = Math.floor(Math.random() * 255);
+    randomColor[2] = Math.floor(Math.random() * 255);
+    brightness -= 1;
+}
 
 function modifyGridSize(){
     container.replaceChildren();
@@ -11,6 +21,7 @@ function modifyGridSize(){
     }
     createGrid(newSize);
     addCellListener();
+    brightness = 110;
 }
 
 /*create rows, create columns, then add the columns to the rows,
@@ -39,7 +50,9 @@ function addCellListener(){
 
 
 function hover(e){
-    e.target.classList.add('hovered');
+    createRandomColor();
+    e.target.style.backgroundColor = `rgb(${randomColor[0]}, ${randomColor[1]}, ${randomColor[2]})`;
+    e.target.style.filter = `brightness(${brightness}%)`;
 }
 
 sizeButton.addEventListener('click', modifyGridSize);
